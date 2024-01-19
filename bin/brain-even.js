@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
 
-const generateRandomNumber = () => Math.floor(Math.random() * 100) + 1;
-
-const isEven = (num) => num % 2 === 0;
+function isEven(num) {
+  return num % 2 === 0;
+}
 
 const printWelcomeMessage = () => {
   console.log('Welcome to the Brain Games!');
@@ -28,14 +28,11 @@ const playGame = () => {
   let correctAnswersCount = 0;
 
   while (correctAnswersCount < 3) {
-    const randomNumber = generateRandomNumber();
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
     console.log(`Question: ${randomNumber}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
-    if (isEven(randomNumber) && userAnswer.toLowerCase() === 'yes') {
-      console.log('Correct!');
-      correctAnswersCount += 1;
-    } else if (!isEven(randomNumber) && userAnswer.toLowerCase() === 'no') {
+    if ((isEven(randomNumber) && userAnswer.toLowerCase() === 'yes') || (!isEven(randomNumber) && userAnswer.toLowerCase() === 'no')) {
       console.log('Correct!');
       correctAnswersCount += 1;
     } else {
