@@ -5,11 +5,25 @@ const generateRandomNumber = () => Math.floor(Math.random() * 100) + 1;
 
 const isEven = (num) => num % 2 === 0;
 
-const playGame = () => {
+const printWelcomeMessage = () => {
   console.log('Welcome to the Brain Games!');
-  const playerName = readlineSync.question('May I have your name? ');
+};
+
+const getPlayerName = () => readlineSync.question('May I have your name? ');
+
+const greetPlayer = (playerName) => {
   console.log(`Hello, ${playerName}!`);
+};
+
+const printInstructions = () => {
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
+};
+
+const playGame = () => {
+  printWelcomeMessage();
+  const playerName = getPlayerName();
+  greetPlayer(playerName);
+  printInstructions();
 
   let correctAnswersCount = 0;
 
@@ -25,7 +39,7 @@ const playGame = () => {
       console.log('Correct!');
       correctAnswersCount += 1;
     } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${isEven(randomNumber) ? 'yes' : 'no'}'.`);
+      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${isEven(randomNumber) ? 'yes' : 'no'}.`);
       console.log(`Let's try again, ${playerName}!`);
       return;
     }
