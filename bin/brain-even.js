@@ -43,6 +43,6 @@ const playGame = () => {
   }
 
   console.log(`Congratulations, ${playerName}!`);
-}; 
+};
 
 playGame();
