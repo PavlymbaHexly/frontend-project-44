@@ -20,7 +20,7 @@ const checkAnswer = (randomNumber, userAnswer, playerName) => {
 
 const playGame = () => {
   const playerName = Welcome();
-  console.log('Answer "yes" if the number is even, otherwise answer "no".'); // Добавлено описание задачи
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
   let correctAnswersCount = 0;
 
   while (correctAnswersCount < 3) {
