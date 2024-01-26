@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
+import { Welcome } from '../src/cli.js';
 import {
   // eslint-disable-next-line import/named
-  gameStart, duplicates, Welcome, randomNum,
+  gameStart, duplicates, randomNum,
 } from '../src/index.js';
 
 const max = 150;
