@@ -1,5 +1,3 @@
-import readlineSync from 'readline-sync';
-
 // eslint-disable-next-line consistent-return
 export function gameStart(name, gameName, repeats) {
   let count = 0;
@@ -19,13 +17,6 @@ export function duplicates(correctAnswer, answer, name) {
     console.log(`Let's try again, ${name}`);
     return 0;
   }
-}
-
-export function Welcome() {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  return name;
 }
 
 export function randomNum(min, max) {
