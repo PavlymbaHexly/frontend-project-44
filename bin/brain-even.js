@@ -1,30 +1,48 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
-import {
-  gameStart, duplicates, Welcome, randomNum,
-} from '../src/index.js';
-
-const max = 100;
-const repeats = 3;
 
 function isEven(num) {
   return num % 2 === 0;
 }
 
-// eslint-disable-next-line consistent-return
-function brainEven(name) {
-  const question = randomNum(1, max);
-  console.log(`Question: ${question}`);
-  const answer = readlineSync.question('Your answer: ');
-  const correctAnswer = isEven(question) ? 'yes' : 'no';
-  duplicates(correctAnswer, answer, name);
-  if (correctAnswer !== answer) {
-    return 0;
+const printWelcomeMessage = () => {
+  console.log('Welcome to the Brain Games!');
+};
+
+const getPlayerName = () => readlineSync.question('May I have your name? ');
+
+const greetPlayer = (playerName) => {
+  console.log(`Hello, ${playerName}!`);
+};
+
+const printInstructions = () => {
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+};
+
+const playGame = () => {
+  printWelcomeMessage();
+  const playerName = getPlayerName();
+  greetPlayer(playerName);
+  printInstructions();
+
+  let correctAnswersCount = 0;
+
+  while (correctAnswersCount < 3) {
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    console.log(`Question: ${randomNumber}`);
+    const userAnswer = readlineSync.question('Your answer: ');
+
+    if ((isEven(randomNumber) && userAnswer.toLowerCase() === 'yes') || (!isEven(randomNumber) && userAnswer.toLowerCase() === 'no')) {
+      console.log('Correct!');
+      correctAnswersCount += 1;
+    } else {
+      console.log(`${userAnswer} is wrong answer`);
+      console.log(`Let's try again, ${playerName}!`);
+      return;
+    }
   }
-}
 
-const gameName = brainEven;
+  console.log(`Congratulations, ${playerName}!`);
+};
 
-const name = Welcome();
-console.log('Answer "yes" if the number is even, otherwise answer "no".');
-gameStart(name, gameName, repeats);
+playGame();
