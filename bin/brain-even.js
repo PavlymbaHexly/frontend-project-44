@@ -5,26 +5,39 @@ function isEven(num) {
   return num % 2 === 0;
 }
 
+const playGame = () => {
+  // eslint-disable-next-line no-use-before-define
+  printWelcomeMessage();
+  // eslint-disable-next-line no-use-before-define
+  const playerName = getPlayerName();
+  // eslint-disable-next-line no-use-before-define
+  greetPlayer(playerName);
+  // eslint-disable-next-line no-use-before-define
+  printInstructions();
+  // eslint-disable-next-line no-use-before-define
+  startGame(playerName);
+};
+
 const printWelcomeMessage = () => {
   console.log('Welcome to the Brain Games!');
 };
 
-const getPlayerName = () => readlineSync.question('May I have your name? ');
+const getPlayerName = () => {
+  const playerName = readlineSync.question('May I have your name? ');
+  return playerName;
+};
 
 const greetPlayer = (playerName) => {
   console.log(`Hello, ${playerName}!`);
 };
 
 const printInstructions = () => {
+  // Реализация функции вывода инструкций
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
 };
 
-const playGame = () => {
-  printWelcomeMessage();
-  const playerName = getPlayerName();
-  greetPlayer(playerName);
-  printInstructions();
-
+const startGame = (playerName) => {
+  // Реализация логики игры
   let correctAnswersCount = 0;
 
   while (correctAnswersCount < 3) {
