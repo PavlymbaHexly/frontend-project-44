@@ -1,15 +1,13 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
+import { Welcome } from '../src/cli.js';
 
 function isEven(num) {
   return num % 2 === 0;
 }
 
 const playGame = () => {
-  console.log('Welcome to the Brain Games!');
-  const playerName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${playerName}!`);
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  const playerName = Welcome();
 
   let correctAnswersCount = 0;
 
