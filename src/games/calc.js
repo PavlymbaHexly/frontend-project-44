@@ -35,4 +35,6 @@ export const brainCalc = (name) => {
   }
 
   console.log(`Congratulations, ${name}!`);
+  
+  return 1;
 };

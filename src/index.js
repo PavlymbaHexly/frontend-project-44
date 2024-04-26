@@ -1,5 +1,5 @@
-import { Welcome } from './cli.js';
 import readlineSync from 'readline-sync';
+import { Welcome } from './cli.js';
 
 export const gameStart = (n, str, gameName) => {
   const name = Welcome();
@@ -24,7 +24,7 @@ export const loseGame = (correctAnswer, answer, name) => {
   console.log(`Let's try again, ${name}!`);
 };
 
-export const answerCheck = (answer, correctAnswer, name) => {
+export const answerCheck = (answer, correctAnswer) => {
   const parsedAnswer = typeof correctAnswer === 'number' ? parseInt(answer, 10) : answer;
   const isCorrect = parsedAnswer === correctAnswer;
   return isCorrect ? 1 : 0;

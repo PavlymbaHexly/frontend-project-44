@@ -11,7 +11,7 @@ const generateProgression = () => {
   const hidden = getRandom(0, len - 1);
   const progression = [];
   let missingNumber;
-  for (let i = 0; i < len; i++) {
+  for (let i = 0; i < len; i += 1) {
     const number = start + step * i;
     if (i === hidden) {
       missingNumber = number;
