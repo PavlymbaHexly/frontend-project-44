@@ -1,24 +1,30 @@
-// eslint-disable-next-line consistent-return
-export function gameStart(name, gameName, repeats) {
-  let count = 0;
-  while (count < repeats) {
-    if (gameName(name) === 0) return 0;
-    count += 1;
+import { Welcome } from './cli.js';
+
+export const gameStart = (n, str, gameName) => {
+  const name = Welcome();
+  let correctCount = 0;
+  console.log(str);
+  while (correctCount < n) {
+    if (gameName(name) === 1) {
+      correctCount += 1;
+    } else {
+      console.log(`Let's try again, ${name}!`);
+      return 0;
+    }
   }
   console.log(`Congratulations, ${name}!`);
-}
+  return 1;
+};
 
-// eslint-disable-next-line consistent-return
-export function duplicates(correctAnswer, answer, name) {
-  if (correctAnswer === answer) {
-    console.log('Correct!');
-  } else {
-    console.log(`${answer} is wrong answer ;(. Correct answer was ${correctAnswer}`);
-    console.log(`Let's try again, ${name}!`);
-    return 0;
-  }
-}
+export const getAnswer = (question) => readlineSync.question(`Question: ${question}\nYour answer: `);
 
-export function randomNum(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
-}
+export const loseGame = (correctAnswer, answer, name) => {
+  console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+  console.log(`Let's try again, ${name}!`);
+};
+
+export const answerCheck = (answer, correctAnswer, name) => {
+  const parsedAnswer = typeof correctAnswer === 'number' ? parseInt(answer, 10) : answer;
+  const isCorrect = parsedAnswer === correctAnswer;
+  return isCorrect ? 1 : 0;
+};
