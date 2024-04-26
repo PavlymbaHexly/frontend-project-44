@@ -32,11 +32,9 @@ export const brainCalc = (name) => {
       console.log('Correct!');
       correctCount += 1;
     } else {
-      console.log(`Incorrect. The correct answer was ${correctAnswer}.`);
-      return 0;
+      console.log('Incorrect. Try again!');
     }
   }
 
   console.log(`Congratulations, ${name}!`);
-  return 1;
 };
