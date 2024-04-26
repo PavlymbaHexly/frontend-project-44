@@ -31,10 +31,12 @@ export const brainCalc = (name) => {
     if (answerCheck(userAnswer, correctAnswer, name) === 1) {
       console.log('Correct!');
       correctCount += 1;
-    } else return 0;
+    } else {
+      console.log(`Incorrect. The correct answer was ${correctAnswer}.`);
+      return 0;
+    }
   }
 
   console.log(`Congratulations, ${name}!`);
-  
   return 1;
 };
