@@ -33,8 +33,10 @@ export const brainCalc = (name) => {
       correctCount += 1;
     } else {
       console.log('Incorrect. Try again!');
+      return;
     }
   }
 
   console.log(`Congratulations, ${name}!`);
 };
+
