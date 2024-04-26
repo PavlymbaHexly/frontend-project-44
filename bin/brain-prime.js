@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
 import { Welcome } from '../src/cli.js';
-import {
-  gameStart, duplicates, randomNum,
-} from '../src/index.js';
+import { gameStart, duplicates, randomNum } from '../src/index.js';
 
 const max = 50;
 const repeats = 3;
@@ -20,16 +18,13 @@ function isPrime(num) {
   return true;
 }
 
-// eslint-disable-next-line consistent-return
 function brainPrime(name) {
   const question = randomNum(1, max);
   console.log(`Question: ${question}`);
   const answer = readlineSync.question('Your answer: ');
   const correctAnswer = isPrime(question) ? 'yes' : 'no';
   duplicates(correctAnswer, answer, name);
-  if (correctAnswer !== answer) {
-    return 0;
-  }
+  return correctAnswer === answer ? 1 : 0;
 }
 
 const gameName = brainPrime;

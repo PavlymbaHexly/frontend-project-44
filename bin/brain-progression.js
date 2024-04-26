@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
 import { Welcome } from '../src/cli.js';
-import {
-  gameStart, duplicates, randomNum,
-} from '../src/index.js';
+import { gameStart, duplicates, randomNum } from '../src/index.js';
 
 const max = 50;
 const repeats = 3;
@@ -18,7 +16,6 @@ function generateProgression() {
   return progression;
 }
 
-// eslint-disable-next-line consistent-return
 function brainProgression(name) {
   const progression = generateProgression();
   const hiddenIndex = randomNum(0, progression.length - 1);
@@ -27,9 +24,7 @@ function brainProgression(name) {
   console.log(`Question: ${progression.join(' ')}`);
   const answer = parseInt(readlineSync.question('Your answer: '), 10);
   duplicates(correctAnswer, answer, name);
-  if (correctAnswer !== answer) {
-    return 0;
-  }
+  return correctAnswer === answer ? 1 : 0;
 }
 
 const gameName = brainProgression;
