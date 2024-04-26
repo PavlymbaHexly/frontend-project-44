@@ -1,4 +1,5 @@
 import { Welcome } from './cli.js';
+import readlineSync from 'readline-sync';
 
 export const gameStart = (n, str, gameName) => {
   const name = Welcome();
