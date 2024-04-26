@@ -39,4 +39,3 @@ export const brainCalc = (name) => {
 
   console.log(`Congratulations, ${name}!`);
 };
-
